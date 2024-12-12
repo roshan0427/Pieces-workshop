@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Facts Explorer</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 600px;
+        }
+        .fact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        #fact-text {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .fun-fact {
+            font-style: italic;
+            color: #ffd700;
+        }
+        .category-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+        button {
+            background: #ffd700;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌌 Cosmic Facts Explorer</h1>
+        <div class="fact-card">
+            <p id="fact-text">Click the button to discover amazing space facts!</p>
+            <p id="fun-fact" class="fun-fact"></p>
+            <div id="mind-blown"></div>
+            <span id="category" class="category-tag"></span>
+        </div>
+        <button id="new-fact-btn">🚀 Get New Fact</button>
+    </div>
+
+    <script>
+        const spaceFacts = {
+            "spaceFacts": [
+                {
+                    "id": 1,
+                    "fact": "🌍 Plot twist: A day on Venus is longer than its year! Talk about a long Monday...",
+                    "funFact": "If you thought your workday was long, Venusians would like a word!",
+                    "category": "Planetary Pranks",
+                    "mindBlownLevel": "🤯🤯🤯"
+                },
+                {
+                    "id": 2,
+                    "fact": "☀️ The Sun is the ultimate attention seeker - hogging 99.86% of solar system's mass",
+                    "funFact": "Classic only child behavior!",
+                    "category": "Solar Sass",
+                    "mindBlownLevel": "🤯🤯"
+                },
+                {
+                    "id": 3,
+                    "fact": "💎 There's a planet made of diamonds (55 Cancri e)",
+                    "funFact": "Literally the most expensive real estate in the universe",
+                    "category": "Cosmic Bling",
+                    "mindBlownLevel": "🤯🤯🤯🤯"
+                },
+                {
+                    "id": 4,
+                    "fact": "⚡ Mercury's year is just 88 Earth days",
+                    "funFact": "The planet that's always in a hurry!",
+                    "category": "Speed Demons",
+                    "mindBlownLevel": "🤯"
+                },
+                {
+                    "id": 5,
+                    "fact": "🌟 Jupiter's family photo must be chaos with 79 moons!",
+                    "funFact": "Jupiter: The parent who can't stop adopting",
+                    "category": "Family Matters",
+                    "mindBlownLevel": "🤯🤯"
+                }
+            ],
+            "factCategories": {
+                "Planetary Pranks": "🎭",
+                "Solar Sass": "🎪",
+                "Cosmic Bling": "💎",
+                "Speed Demons": "⚡",
+                "Family Matters": "👨‍👩‍👦‍👦"
+            }
+        };
+
+        const factText = document.getElementById('fact-text');
+        const funFactText = document.getElementById('fun-fact');
+        const categorySpan = document.getElementById('category');
+        const mindBlownDiv = document.getElementById('mind-blown');
+        const newFactBtn = document.getElementById('new-fact-btn');
+
+        function getRandomFact() {
+            const facts = spaceFacts.spaceFacts;
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            
+            factText.textContent = randomFact.fact;
+            funFactText.textContent = randomFact.funFact;
+            categorySpan.textContent = `${spaceFacts.factCategories[randomFact.category]} ${randomFact.category}`;
+            mindBlownDiv.textContent = randomFact.mindBlownLevel;
+        }
+
+        newFactBtn.addEventListener('click', getRandomFact);
+        getRandomFact(); // Display initial fact when page loads
+    </script>
+</body>
+</html>
